@@ -15,8 +15,8 @@ public class Maven_Builder {
     private String directory; // change project name
     private Git git;
     private RevCommit commit;
-    private static String username;
-    private static String password;
+    private String username;
+    private String password;
 
 
     public Maven_Builder(String target_url , String direc , String username_ , String pass){

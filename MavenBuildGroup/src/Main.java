@@ -69,16 +69,16 @@ public class Main {
 
             String json_res = new String();
 			json_res += "{"+"\n"+
-					"\"destination\" : " + destination +"\","+"\n"+
-                    "\"object_type\" : \"response\" ,"+"\n"+
-                    "\"status\" :  \"" + signal.toString()+ "\","+"\n"+
-                    "\"description\" : \""+report+"\","+"\n"+
-//                    "\"commit_ID\" : \"" +project.getCommitID()+"\","+"\n"+
-                    "\"github_login\" : \" "+login.toString()+"\","+"\n"+
-                    "\"github_password\" : \""+password.toString()+"\","+"\n"+
-                    "\"repository_url\" : \""+url.toString()+"\","+"\n"+
-                    "\"project_name\" : \""+projectName.toString()+"\" ,"+"\n"+
-                    "\"method\" : \"check-build-status\""+"\n"+
+					"\"destination\" : " + destination + "\",\n"+
+                    "\"object_type\" : \"response\" ,\n"+
+                    "\"status\" :  \"" + signal.toString()+ "\",\n"+
+                    "\"description\" : \"" + report + "\",\n"+
+//                    "\"commit_ID\" : \"" +project.getCommitID() + "\",\n"+
+                    "\"github_login\" : \" "+login.toString() + "\",\n"+
+                    "\"github_password\" : \""+password.toString() + "\",\n"+
+                    "\"repository_url\" : \""+url.toString() + "\",\n"+
+                    "\"project_name\" : \""+projectName.toString() + "\" ,\n"+
+                    "\"method\" : \"check-build-status\"\n"+
                     "} ";
             File file = new File("output.json");
 
