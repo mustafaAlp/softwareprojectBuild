@@ -80,23 +80,10 @@ public class Main {
                     "\"project_name\" : \""+projectName.toString() + "\" ,\n"+
                     "\"method\" : \"check-build-status\"\n"+
                     "} ";
-            File file = new File("output.json");
-
-            // creates the file
-            file.createNewFile();
-
-            // creates a FileWriter Object
-            FileWriter writer = new FileWriter(file);
-
-            // Writes the content to the file
-            writer.write(json_res);
-            writer.flush();
-            writer.close();
-
-           	Runtime.getRuntime().exec("python3 CONNECTOR/Connector.py output.json" );
-            	//dizinler değişicek , X
-
-
+			
+			String postUrl = "http://localhost:8081/integration";
+			
+			HttpRequest.PostJson(postUrl, json_res);
 
         } catch (Exception e) {
             System.err.println(e.toString());

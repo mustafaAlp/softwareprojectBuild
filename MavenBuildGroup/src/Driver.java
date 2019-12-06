@@ -1,11 +1,19 @@
+import java.io.IOException;
 
 public class Driver {
 
 	private static String pJson;
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) throws IOException {
+		testPostJson();
 		
+	}
+	
+	
+	/**
+	 * test for Main.build()  method
+	 */
+	public static void testMainBuild(){
 		pJson = 
 				"{\n" + 
 				"        \"object_type\": \"ot\" ,\n" + 
@@ -21,9 +29,20 @@ public class Driver {
 				"}\n";
 				
 		System.out.println(pJson);
-		
 		Main.build(pJson);
+
 	}
+	
+	public static void testPostJson() throws IOException{
+		
+		String url  = "http://dummy.restapiexample.com/api/v1/create";
+		String json = "{\"name\":\"Mustafa Alp\",\"salary\":\"10000\",\"age\":\"29\"}";
+		
+		String responce = (HttpRequest.PostJson(url, json));
+		System.out.print(responce);
+	}
+	
+	
 
 }
 //url username password eklenicek
