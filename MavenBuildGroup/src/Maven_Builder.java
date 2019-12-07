@@ -12,7 +12,7 @@ import org.eclipse.jgit.api.errors.NoFilepatternException;
 import org.eclipse.jgit.api.errors.NoHeadException;
 import org.eclipse.jgit.api.errors.NoMessageException;
 import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
-import org.eclipse.jgit.dircache.DirCache;
+//import org.eclipse.jgit.dircache.DirCache;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
@@ -59,7 +59,7 @@ public class Maven_Builder {
         Invoker invoker = new DefaultInvoker();
       
         
-		String M2_HOME = System.getenv("/usr/share/maven");
+		String M2_HOME = System.getenv("M2_HOME");
 
 		if (M2_HOME == null)
 			M2_HOME = "/usr/share/maven";
@@ -95,8 +95,8 @@ public class Maven_Builder {
         if(signal){
 
             // add
-            DirCache index = git.add().addFilepattern( "." ).call();
-
+        	//DirCache index = git.add().addFilepattern( "." ).call();
+        	git.add().addFilepattern( "." ).call();
             // commit
             commit = git.commit().setMessage( "Build Success!" ).call();
             // push to remote:
