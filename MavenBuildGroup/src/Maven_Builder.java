@@ -2,12 +2,19 @@
 import org.apache.maven.shared.invoker.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import org.eclipse.jgit.api.*;
+import org.eclipse.jgit.api.errors.ConcurrentRefUpdateException;
+import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.JGitInternalException;
+import org.eclipse.jgit.api.errors.NoFilepatternException;
+import org.eclipse.jgit.api.errors.NoHeadException;
+import org.eclipse.jgit.api.errors.NoMessageException;
+import org.eclipse.jgit.api.errors.WrongRepositoryStateException;
 import org.eclipse.jgit.dircache.DirCache;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
-import org.codehaus.plexus.util.cli.StreamConsumer;
 
 public class Maven_Builder {
 
@@ -51,11 +58,14 @@ public class Maven_Builder {
 
         Invoker invoker = new DefaultInvoker();
       
-//		String temp = "Path> " + System.getenv("/usr/share/maven");
-//		System.out.println(temp);
+        
+		String M2_HOME = System.getenv("/usr/share/maven");
+
+		if (M2_HOME == null)
+			M2_HOME = "/usr/share/maven";
 		
 		
-        invoker.setMavenHome(new File("/usr/share/maven")); //need to set the maven home
+        invoker.setMavenHome(new File(M2_HOME)); //need to set the maven home
 		System.out.println("hasdgds");
 
         invoker.execute( request ); //build the project
@@ -63,7 +73,24 @@ public class Maven_Builder {
 
     }
 
-    public void push(Boolean signal) throws  Exception{
+    /**
+	 * 
+	 * @param signal
+	 * 
+	 * 
+     * @throws NoFilepatternException 
+     * @throws WrongRepositoryStateException 
+     * @throws JGitInternalException 
+     * @throws ConcurrentRefUpdateException 
+     * @throws NoMessageException 
+     * @throws NoHeadException 
+     * @throws InvalidRemoteException 
+     * @throws IOException 
+	 */
+    public void push(Boolean signal) throws NoFilepatternException,
+    			NoHeadException, NoMessageException, ConcurrentRefUpdateException, JGitInternalException,
+    			WrongRepositoryStateException, InvalidRemoteException, IOException 
+    {
 
         if(signal){
 
@@ -82,6 +109,10 @@ public class Maven_Builder {
         Runtime.getRuntime().exec("rm -r /tmp/" + directory ); //remove directory
     }
 
+    /**
+	 * 
+	 * @return
+	 */
     public String getCommitID(){
 
         String commitId = commit.getId().toString();

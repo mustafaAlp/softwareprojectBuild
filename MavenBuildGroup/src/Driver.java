@@ -5,7 +5,8 @@ public class Driver {
 	private static String pJson;
 	
 	public static void main(String[] args) throws IOException {
-		testPostJson();
+		//testPostJson();
+		testMainBuild();
 		
 	}
 	
