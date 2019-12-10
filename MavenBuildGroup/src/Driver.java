@@ -1,15 +1,30 @@
 import java.io.IOException;
+import java.net.InetAddress;
 
 public class Driver {
 
 	private static String pJson;
 	
 	public static void main(String[] args) throws IOException {
-		testPostJson();
-		testMainBuild();
+//		testPostJson();
+//		testMainBuild();
+		testBuildSocketServer();
 		
 	}
 	
+    public static void testBuildSocketServer() {
+    	try{
+        	BuilSocketServer app = new BuilSocketServer("");
+            System.out.println("\r\nRunning Server: " + 
+                    "Host=" + app.getSocketAddress().getHostAddress() + 
+                    " Port=" + app.getPort());
+            
+            app.listen();
+        }
+    	catch(Exception e){
+    		System.err.print("SocketError");
+    	}
+    }
 	
 	/**
 	 * test for Main.build()  method

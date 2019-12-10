@@ -89,7 +89,7 @@ public class Main {
 			
 			String postUrl = "http://localhost:8081/integration";
 			
-			HttpRequest.PostJson(postUrl, json_res);
+//			HttpRequest.PostJson(postUrl, json_res);
 
         } catch (NoFilepatternException e) {
             System.err.println(e.toString());

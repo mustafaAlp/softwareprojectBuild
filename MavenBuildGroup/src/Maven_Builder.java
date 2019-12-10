@@ -54,8 +54,6 @@ public class Maven_Builder {
         request.setGoals( Collections.singletonList( "compile" ) ); //set build command
 
 
-		System.out.println("request setted");
-
         Invoker invoker = new DefaultInvoker();
       
         
@@ -66,7 +64,6 @@ public class Maven_Builder {
 		
 		
         invoker.setMavenHome(new File(M2_HOME)); //need to set the maven home
-		System.out.println("hasdgds");
 
         invoker.execute( request ); //build the project
 
