@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.net.InetAddress;
 
 public class Driver {
 
@@ -13,6 +12,7 @@ public class Driver {
 	}
 	
     public static void testBuildSocketServer() {
+		while(true){
     	try{
         	BuilSocketServer app = new BuilSocketServer("");
             System.out.println("\r\nRunning Server: " + 
@@ -21,9 +21,8 @@ public class Driver {
             
             app.listen();
         }
-    	catch(Exception e){
-    		System.err.print("SocketError");
-    	}
+    	catch(Exception e){}
+		}
     }
 	
 	/**
