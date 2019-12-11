@@ -79,7 +79,7 @@ public class Main {
                     "\"object_type\" : \"response\" ,\n"+
                     "\"status\" :  \"" + signal.toString()+ "\",\n"+
                     "\"description\" : \"" + report + "\",\n"+
-//                    "\"commit_ID\" : \"" +project.getCommitID() + "\",\n"+
+                    "\"commit_ID\" : \"" +project.getCommitID() + "\",\n"+
                     "\"github_login\" : \" " + login.toString() + "\",\n"+
                     "\"github_password\" : \"" + password.toString() + "\",\n"+
                     "\"repository_url\" : \"" + url.toString() + "\",\n"+

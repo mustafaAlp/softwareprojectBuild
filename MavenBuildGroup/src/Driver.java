@@ -12,16 +12,18 @@ public class Driver {
 	}
 	
     public static void testBuildSocketServer() {
-		while(true){
-    	try{
-        	BuilSocketServer app = new BuilSocketServer("");
-            System.out.println("\r\nRunning Server: " + 
-                    "Host=" + app.getSocketAddress().getHostAddress() + 
-                    " Port=" + app.getPort());
-            
-            app.listen();
-        }
-    	catch(Exception e){}
+		while( true ){
+	    	try{
+	        	BuilSocketServer app = new BuilSocketServer("");
+	            System.out.println("\r\nRunning Server: " + 
+	                    "Host=" + app.getSocketAddress().getHostAddress() + 
+	                    " Port=" + app.getPort());
+	            
+	            app.listen();
+	        }
+	    	catch(Exception e){
+	    		//System.err.println("Exception");
+			}
 		}
     }
 	
