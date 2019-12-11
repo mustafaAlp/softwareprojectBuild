@@ -87,9 +87,11 @@ public class Main {
                     "\"method\" : \"check-build-status\"\n"+
                     "} ";
 			
-			String postUrl = "http://localhost:8081/integration";
+			String postUrl = "http://localhost:8081";
+			String url  = "http://dummy.restapiexample.com/api/v1/create";
+
+			System.err.print("responce " + HttpRequest.PostJson(url, json_res));
 			
-//			HttpRequest.PostJson(postUrl, json_res);
 
         } catch (NoFilepatternException e) {
             System.err.println(e.toString());

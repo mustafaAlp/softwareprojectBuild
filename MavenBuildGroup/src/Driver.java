@@ -11,20 +11,37 @@ public class Driver {
 		
 	}
 	
+	/**
+	 * example input
+	 * {"object_type": "ot","operation": "op", "status": "st","description": "de", "method": "change me", "card_id": "change me", "project_name": "my-app", "repository_url": "https://github.com/gokhanhas/my-app.git", "github_login": "gokhanhas",  "github_password": "Deneme123456789"}
+	 * 
+	 */
+/*test input json 
+ 
+{"object_type": "ot",
+ "operation": "op",
+ "status": "st",
+ "description": "de",
+ "method": "change me",
+ "card_id": "change me",
+ "project_name": "my-app",
+ "repository_url": "https://github.com/gokhanhas/my-app.git",
+ "github_login": "gokhanhas", 
+ "github_password": "hasGTUItiraf"}			 
+ */
     public static void testBuildSocketServer() {
-		while( true ){
 	    	try{
-	        	BuilSocketServer app = new BuilSocketServer("");
+	        	BuilSocketServer app = new BuilSocketServer("localhost");
 	            System.out.println("\r\nRunning Server: " + 
 	                    "Host=" + app.getSocketAddress().getHostAddress() + 
 	                    " Port=" + app.getPort());
 	            
-	            app.listen();
+	            Main.build(app.listen());
 	        }
 	    	catch(Exception e){
 	    		//System.err.println("Exception");
 			}
-		}
+		
     }
 	
 	/**
@@ -42,7 +59,7 @@ public class Driver {
 				"        \"project_name\": \"my-app\",\n" +//todo directory alanı eklenecek
 				"        \"repository_url\": \"https://github.com/gokhanhas/my-app.git\",\n" + 
 				"        \"github_login\": \"gokhanhas\",\n" + 
-				"        \"github_password\": \"hasGTUİtiraf\"\n" +  //ToDo Şİfreyi doğru gir    
+				"        \"github_password\": \"hasGTUItiraf\"\n" +  //ToDo Şİfreyi doğru gir    
 				"}\n";
 				
 		System.out.println(pJson);
