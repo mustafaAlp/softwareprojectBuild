@@ -67,10 +67,10 @@ public class Main {
             project.push(signal);
 
             if(signal) {
-            	destination = "test";
+            	destination = "7";
             }
             else {
-            	destination = "plan";
+            	destination = "2";
             }
 
             String json_res = new String();
@@ -90,7 +90,7 @@ public class Main {
 			String postUrl = "http://localhost:8081";
 			String url  = "http://dummy.restapiexample.com/api/v1/create";
 
-			System.err.print("responce " + HttpRequest.PostJson(url, json_res));
+			System.err.print("responce " + HttpRequest.PostJson(postUrl, json_res));
 			
 
         } catch (NoFilepatternException e) {

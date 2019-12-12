@@ -27,7 +27,7 @@ public class Driver {
  "project_name": "my-app",
  "repository_url": "https://github.com/gokhanhas/my-app.git",
  "github_login": "gokhanhas", 
- "github_password": "hasGTUItiraf"}			 
+ "github_password": "Deneme123456789"}			 
  */
     public static void testBuildSocketServer() {
 	    	try{
@@ -59,7 +59,7 @@ public class Driver {
 				"        \"project_name\": \"my-app\",\n" +//todo directory alanı eklenecek
 				"        \"repository_url\": \"https://github.com/gokhanhas/my-app.git\",\n" + 
 				"        \"github_login\": \"gokhanhas\",\n" + 
-				"        \"github_password\": \"hasGTUItiraf\"\n" +  //ToDo Şİfreyi doğru gir    
+				"        \"github_password\": \"Deneme123456789\"\n" +  //ToDo Şİfreyi doğru gir    
 				"}\n";
 				
 		System.out.println(pJson);
