@@ -28,6 +28,7 @@ public class Main {
     private static String card_id;
     private static String method;
     private static String destination;
+    private static String fileName = new SimpleDateFormat("yyyyMMddHHmm'.txt'").format(new Date());
     
 
     public static void build(String pJson) {
@@ -37,7 +38,7 @@ public class Main {
             JsonStr = pJson;
             parse_Json();
 
-            PrintStream out = new PrintStream(new FileOutputStream("report.txt"));
+            PrintStream out = new PrintStream(new FileOutputStream(fileName));
             System.setOut(out);
             
          
@@ -47,7 +48,7 @@ public class Main {
             
 
             Boolean signal  = null; //to send request
-            BufferedReader br = new BufferedReader(new FileReader("report.txt")); //read report from the file
+            BufferedReader br = new BufferedReader(new FileReader(fileName)); //read report from the file
 
             String sCurrentLine;
             String report = new String();
@@ -128,7 +129,7 @@ public class Main {
             System.err.println(e.toString());
             System.exit(1);      
         }finally {
-            File delete = new File("report.txt");
+            File delete = new File(fileName);
             delete.delete();
         }
     }
