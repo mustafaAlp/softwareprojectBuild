@@ -3,6 +3,7 @@ package BuilSocketServer;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -29,34 +30,35 @@ import org.json.JSONObject;
 
 public class Main {
 
-    private  String login;
-    private  String password;
-    private  String  url;
-    private  String  projectName;
-    private  String JsonStr;
-    private  String object_type;
-    private  String card_id;
-    private  String method;
-    private  String destination;
-    private  String fileName ;
+    private static String login;
+    private static String password;
+    private static String  url;
+    private static String  projectName;
+    private static String JsonStr;
+    private static String object_type;
+    private static String card_id;
+    private static String method;
+    private static String destination;
+    private static String fileName ;
     
 
-    public  void build(String pJson) throws IOException {
+    public static void build(String pJson) throws IOException {
 
         try {
+        	ByteArrayOutputStream stream = new ByteArrayOutputStream();
 
             JsonStr = pJson;
             parse_Json();
             
-            fileName = "report-" + new SimpleDateFormat("yyyyMMddHHmmSSS'.txt'").format(new Date());
-            System.err.println("\n\n"+ fileName + "\n\n");
-            
+//            fileName = "report-" + new SimpleDateFormat("yyyyMMddHHmmSSS'.txt'").format(new Date());
+//            System.err.println("\n\n"+ fileName + "\n\n");
+              StringBuffer SB = new StringBuffer();
             
             PrintStream sys = System.out; 
-            FileOutputStream reportFile = new FileOutputStream("report.txt", false);
-            reportFile.flush();
+//            FileOutputStream reportFile = new FileOutputStream(fileName, false);
+//            reportFile.flush();
             
-            PrintStream out = new PrintStream(reportFile, true, StandardCharsets.UTF_8.toString());
+            PrintStream out = new PrintStream(stream, true, StandardCharsets.UTF_8.toString());
             System.setOut(out);            
 //            File delete = new File("report.txt");        
 //            delete.delete();
@@ -75,17 +77,19 @@ public class Main {
 
 
             Boolean signal  = null; //to send request
-            BufferedReader br = new BufferedReader(new FileReader("report.txt")); //read report from the file
+//            BufferedReader br = new BufferedReader(new FileReader(fileName)); //read report from the file
 
-            String sCurrentLine;
-            String report = new String();
+//            String sCurrentLine;
+            String report = new String(stream.toByteArray());
 
-            while ((sCurrentLine = br.readLine()) != null) {
+//            while ((sCurrentLine = br.readLine()) != null) {
 //            	System.err.print(sCurrentLine+"\n");
 //            	if(sCurrentLine.charAt(0) != '\u0000')
-            		report += sCurrentLine;
-            }
+//            		report += sCurrentLine;
+//            }
             
+        	System.err.println(report);
+        	
             if(report.contains("BUILD SUCCESS")){
             	System.err.print("BUILD SUCCESS\n");
                 signal = true; // request signal to send
@@ -93,7 +97,7 @@ public class Main {
             else {
                 signal = false; // request to send
             }
-            br.close();
+//            br.close();
 
             project.push(signal);
             String commit;
@@ -218,7 +222,7 @@ public class Main {
      *  
      * @throws JSONException 
      */
-    private  void parse_Json() throws JSONException   {
+    private static void parse_Json() throws JSONException   {
     	
 
         JSONObject obj = new JSONObject(JsonStr);
